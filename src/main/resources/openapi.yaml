@@ -111,30 +111,63 @@ components:
         id:
           type: integer
           readOnly: true
-        name:
+        firstName:
           type: string
           maxLength: 255
-        email:
+        lastName:
+          type: string
+          maxLength: 255
+        rut:
+          type: string
+          maxLength: 15
+        dv:
+          type: string
+          maxLength: 1
+        birthDate:
+          type: string
+          format: date
+        emailAddress:
           type: string
           format: email
+          maxLength: 255
+        password:
+          type: string
           maxLength: 255
     UserCreate:
       type: object
       properties:
-        name:
+        firstName:
           type: string
           maxLength: 255
-        email:
+        lastName:
+          type: string
+          maxLength: 255
+        rut:
+          type: string
+          maxLength: 15
+        dv:
+          type: string
+          maxLength: 1
+        birthDate:
+          type: string
+          format: date
+        emailAddress:
           type: string
           format: email
+          maxLength: 255
+        password:
+          type: string
           maxLength: 255
     UserUpdate:
       type: object
       properties:
-        name:
+        firstName:
           type: string
           maxLength: 255
-        email:
+        lastName:
+          type: string
+          maxLength: 255
+        emailAddress:
           type: string
           format: email
           maxLength: 255
