@@ -9,6 +9,5 @@ public interface UserRepository {
     Mono<User> findById(Long id);
     Mono<User> save(User user);
     Mono<Void> deleteById(Long id);
-
-    Mono<User> findByEmail(String email);
+    Mono<User> findByEmailAddress(String emailAddress);
 }

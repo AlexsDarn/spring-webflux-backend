@@ -25,7 +25,7 @@ public class GetUserUseCase implements UserService {
 
     @Override
     public Mono<User> createUser(User user) {
-        return userRepository.findByEmail(user.getEmail())
+        return userRepository.findByEmailAddress(user.getEmailAddress())
                 .flatMap(existingUser -> Mono.error(new IllegalStateException("User already exists")))
                 .switchIfEmpty(userRepository.save(user))
                 .cast(User.class);
@@ -35,8 +35,13 @@ public class GetUserUseCase implements UserService {
     public Mono<User> updateUser(Long id, User user) {
         return userRepository.findById(id)
                 .flatMap(existingUser -> {
-                    existingUser.setName(user.getName());
-                    existingUser.setEmail(user.getEmail());
+                    existingUser.setFirstName(user.getFirstName());
+                    existingUser.setLastName(user.getLastName());
+                    existingUser.setRut(user.getRut());
+                    existingUser.setDv(user.getDv());
+                    existingUser.setBirthDate(user.getBirthDate());
+                    existingUser.setEmailAddress(user.getEmailAddress());
+                    existingUser.setPassword(user.getPassword());
                     return userRepository.save(existingUser);
                 });
     }
